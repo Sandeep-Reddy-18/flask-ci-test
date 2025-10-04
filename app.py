@@ -6,8 +6,8 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # return f"<h1>Hello from GitHub Actions!</h1><p>This page was updated at: {now}</p>"
-    return f"<h1>It works! Auto-deployed from GitHub at: {now}</h1>"
+    # Change the message one more time
+    return f"<h1>SUCCESS! Fully automated deployment works! Timestamp: {now}</h1>"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5003)
