@@ -11,10 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # STEP 1: Connect the runner to your Tailscale network
+    - name: Connect to Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        authkey: ${{ secrets.TS_AUTHKEY }}
+
+    # STEP 2: Deploy to the server using its Tailscale IP
     - name: Deploy to Server
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.SSH_HOST }}
+        # Use your server's stable Tailscale IP here
+        host: ${{ secrets.SSH_HOST }} 
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
